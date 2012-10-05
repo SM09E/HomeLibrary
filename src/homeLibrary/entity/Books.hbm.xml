@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04.10.2012 22:18:59 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="homeLibrary.entity.Books" table="books" catalog="home_library">
+        <id name="bookId" type="java.lang.Integer">
+            <column name="book_id" />
+            <generator class="identity" />
+        </id>
+        <property name="bookName" type="string">
+            <column name="book_name" not-null="true" />
+        </property>
+        <property name="bookStatus" type="string">
+            <column name="book_status" not-null="true" />
+        </property>
+        <set name="booksAuthorses" inverse="true">
+            <key>
+                <column name="book_id" not-null="true" />
+            </key>
+            <one-to-many class="homeLibrary.entity.BooksAuthors" />
+        </set>
+    </class>
+</hibernate-mapping>
